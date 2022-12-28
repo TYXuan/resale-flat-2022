@@ -1,11 +1,6 @@
 name: Resale Flat Price
 on: [push, workflow_dispatch]
-  # Inputs the workflow accepts.
-  inputs:
-    model:
-      description: 'What kind of model to be used? (decision tree / knn)'
-      required: true
-  
+    
 jobs:
   run-end-to-end-pipeline:
     runs-on: ubuntu-latest
