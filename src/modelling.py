@@ -7,7 +7,7 @@ from sklearn.tree import DecisionTreeRegressor
 
 print('Importing dataset from ./data...')
 
-df = pd.read_csv('C:/Users/Tan Yu Xuan/Desktop/resale-flat/data/clean_csv.csv', index_col=[0])
+df = pd.read_csv('./data/clean_csv.csv', index_col=[0])
 
 print('Preprocessing dataset for predictions...')
 
@@ -17,7 +17,7 @@ df['storey_range_rank'] = df['storey_range'].replace(storey_range_dict)
 print('Ranking storey_range from lowest (0) to highest floor (16).')
 
 # Dropping unused columns
-df.drop(columns = ['month', 'flat_type', 'block', 'street_name', 'storey_range', 'remaining_lease', 'units', 'latitude', 'longitude', 'address', 'town_rank', 'units_rank'], inplace=True)
+df.drop(columns = ['month', 'flat_type', 'block', 'street_name', 'storey_range', 'remaining_lease', 'units', 'town_rank', 'units_rank'], inplace=True)
 print('DataFrame processed sucessfully!')
 
 # Get dummies
@@ -25,7 +25,7 @@ df = pd.get_dummies(data=df, columns=['town'])
 print('Convert categorical variable into dummy/indicator variables')
 
 # Import resale prices dataset
-df_resale = pd.read_csv('C:/Users/Tan Yu Xuan/Desktop/resale-flat/data/resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv', index_col=[0])
+df_resale = pd.read_csv('./data/resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv', index_col=[0])
 df_resale.reset_index(drop=True, inplace = True)
 
 X = df.drop('resale_price', axis=1).values
@@ -34,20 +34,20 @@ model = input('Which algorithm is to be used? (decision tree / knn)')
 
 if model.lower() == 'decision tree':
     print(f'Loading {model.lower()} model...')
-    dtr = load('C:/Users/Tan Yu Xuan/Desktop/resale-flat/src/models/decision_tree_regressor.joblib')
+    dtr = load('./src/models/decision_tree_regressor.joblib')
     y_pred = dtr.predict(X)
     y_pred_df = pd.DataFrame(data=y_pred, columns=["predicted_resale_price"])
     results = df_resale.join(y_pred_df)
-    results.to_csv(r'C:/Users/Tan Yu Xuan/Desktop/resale-flat/data/decision_tree_results.csv')
+    results.to_csv(r'./data/decision_tree_results.csv')
     print('Results saved into csv format!')
 
 elif model.lower() == 'knn':
     print(f'Loading {model.lower()} model...')
-    knn = load('C:/Users/Tan Yu Xuan/Desktop/resale-flat/src/models/knn_regressor.joblib')
+    knn = load('./src/models/knn_regressor.joblib')
     y_pred = knn.predict(X)
     y_pred_df = pd.DataFrame(data=y_pred, columns=["predicted_resale_price"])
     results = df_resale.join(y_pred_df)
-    results.to_csv(r'C:/Users/Tan Yu Xuan/Desktop/resale-flat/data/knn_regressor_results.csv')
+    results.to_csv(r'./resale-flat/data/knn_regressor_results.csv')
     print('Results saved into csv format!')
 
 else:
