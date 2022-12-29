@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python src/modelling.py < 'decision tree'
+python src/modelling.py < 'algorithm_used.txt'
