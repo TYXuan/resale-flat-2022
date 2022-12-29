@@ -19,6 +19,6 @@ jobs:
           pip install -r requirements.txt
       - name: Run executable bash script
         run: |
-          bash ./bash.sh
           echo "Store: ${{ github.event.inputs.model }}"
-          INPUT_STORE=${{ github.event.inputs.model }} bash.sh
+          INPUT_STORE=${{ github.event.inputs.model }} 
+          bash ./bash.sh
