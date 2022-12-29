@@ -1,10 +1,5 @@
 name: Resale Flat Price
 on: [push, workflow_dispatch]
-  inputs:
-    model:
-      description: 'Which algorithm is to be used? (decision tree / knn)'
-      required: true
-      default: 'decision tree'
   
 jobs:
   run-end-to-end-pipeline:
@@ -17,7 +12,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Run executable bash script
-        run: |
-          bash ./bash.sh
-          echo 'Store: ${{ github.event.inputs.model }}'
-          INPUT_STORE=${{ github.event.inputs.model }} python modelling.py
+        run: bash ./bash.sh
