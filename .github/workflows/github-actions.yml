@@ -20,5 +20,5 @@ jobs:
       - name: Run executable bash script
         run: |
           echo "Store: ${{ github.event.inputs.model }}"
-          INPUT_STORE=${{ github.event.inputs.model }} 
+          model=${{ github.event.inputs.model }} 
           bash ./bash.sh
