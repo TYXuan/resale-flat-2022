@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python src/modelling.py
+python3 src/modelling.py
