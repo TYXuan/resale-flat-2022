@@ -1,6 +1,13 @@
 name: Resale Flat Price
-on: [push, workflow_dispatch]
-    
+#on: [push, workflow_dispatch]
+on:
+  workflow_call:
+    inputs:
+      model:
+        description: 'Which algorithm is to be used? (decision tree / knn)'
+        required: true
+        type: string
+        
 jobs:
   run-end-to-end-pipeline:
     runs-on: ubuntu-latest
