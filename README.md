@@ -100,6 +100,7 @@ The goal is for the models to perform better than a simple straight line.
 |Linear Regression    |        0.975       |         17120.50         |           25732.62            |
 |KNN (n_neighbors=5)  |        0.994       |         5094.87          |           12632.29            |
 |`Decision Tree`      |       `0.9997`     |         `686.35`         |           `3032.38`           |
+
 From the evaluation metrics we see that the decision tree regressor out performs baseline linear regression model and knn model. 
 
 In addition, decision tree has the highest explained variance score of 99.97% (best possible score is 1.0) which means there is only 0.03% difference between the expected value and predicted value.
